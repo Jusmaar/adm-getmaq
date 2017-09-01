@@ -1,0 +1,75 @@
+@import "../../../styles";
+.head-logo{
+    width: 100%;
+    background:$primary-color-dark;
+    box-shadow: $border-shadow-bread;
+    padding: 10px 20px;
+    height: 60px;
+    z-index: 2;
+    @media screen and (max-width:768px){
+        margin-bottom: 30px;
+    }
+    .image{
+        img{
+            height: 45px;
+            @media screen and (max-width:768px){
+                width: 150px;
+            }
+        }
+    }
+}
+.eq-login-pass{
+    width: 100%;
+}
+.form-login{
+    margin: auto;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: $border-shadow-bread;
+    background: $fondos;
+    padding: 20px 50px;
+    border-radius: 6px;
+    z-index: 2;
+    @media screen and (max-width:768px){
+        width: 80%;
+    }
+    @media screen and (max-width:576px){
+        width: 90%;
+        padding: 30px 10px;
+    }
+    
+    h2{
+        font-size: 30px;
+        color: $primary-color-dark;
+        font-weight: bolder;
+        @media screen and (max-width:768px){
+            font-size: 20px;
+        }
+        
+    }
+    .btn-login{
+            width: 100%;
+            margin-top: 20px;
+            background: #FF5722;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: $border-shadow-bread;
+            padding: 10px 0px;
+            outline: none;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            @media screen and (max-width:768px){
+                font-size: 14px;
+            }
+            &:active{
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.23), 0 10px 40px rgba(0, 0, 0, 0.19);
+            }
+    }
+    small{
+        a{
+            color: #FF5722;
+        }
+    }
+}

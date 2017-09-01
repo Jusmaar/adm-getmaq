@@ -1,0 +1,24 @@
+<div class="nav-side-menu">
+    <div class="brand">
+      <i class="fa fa-user-circle" aria-hidden="true"></i>
+      <h4>{{name_emp}}</h4>
+    </div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+        <div class="menu-list">
+            <ul id="menu-content" class="menu-content collapse out">
+                <li routerLinkActive="active" [routerLink]="['/home']">
+                  <a [routerLink]="['/home']"><i class="fa fa-home"></i>Home</a>
+                </li>
+
+                <li routerLinkActive="active" [routerLink]="['/publicaciones']">
+                  <a [routerLink]="['/publicaciones']"><i class="fa fa-list"></i> Publicaciones </a>
+                </li>    
+                <!-- <li routerLinkActive="active">
+                  <a [routerLink]="['/perfil']"><i class="fa fa-user fa-lg"></i> Perfil</a>
+                </li> -->
+                <li routerLinkActive="active" [routerLink]="['/login']" (click)="logout()">
+                  <a ><i class="fa fa-sign-out"  ></i>Cerrar sesion</a>
+                </li>
+            </ul>       
+     </div>
+</div>

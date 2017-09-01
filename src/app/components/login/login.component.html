@@ -1,0 +1,40 @@
+
+<div class="head-logo">
+  <div class="image">
+    <img src="assets/img/easymaq_logo.png" alt="logo.png">
+  </div>
+</div>
+
+<div class="form-login">
+  <h2>Iniciar Sesion</h2>
+    <form #formulario="ngForm" novalidate="novalidate" >
+                    <div class="eq-login-pass">
+                         <md-input-container class="full-width">
+                                <input mdInput  placeholder="Correo electronico"
+                                        type="email" 
+                                        name="email" 
+                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                                        ngModel
+                                        #correo="ngModel"
+                                        required>
+                          </md-input-container>
+                      <small *ngIf="correo.errors?.pattern">El campo no tiene el formato de correo, por favor ingrese un correo valido</small>
+                    </div>
+                        <div class="eq-login-email">
+                            <md-input-container class="full-width">
+                                <input mdInput placeholder="Password" 
+                                        name="password" 
+                                        type="password"
+                                        ngModel
+                                        required>
+                            </md-input-container>
+                        </div>
+                <button type="submit" (click)="submit(formulario.value.email,formulario.value.password,formulario)"
+                        class="btn-login">
+                            Ingresar
+                </button>
+    </form>
+    <small><a href="">¿Olvidaste tu contraseña?</a></small>
+</div>
+<app-easymodal [dataconfig]="misdatosdataconfig"></app-easymodal>
+<!-- <app-modal></app-modal> -->

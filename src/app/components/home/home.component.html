@@ -1,0 +1,98 @@
+<app-nav></app-nav>
+<div class="dash">
+  <div class="container-fluid">
+    <div class="row justify-content-md-center">
+      <div class="col-md-5 plan-datos">
+        <h2 class="">120</h2>
+        <p>Total publicaciones</p>
+        <h3>Plan: <span>Ejecutivo</span></h3>
+      </div>
+      <div class="col-md-6">
+        <div class="row justify-content-md-center">
+          <div class="col-md-8 p-desctacada">
+            <div class="p-detalles-head">
+              <p>Destacados</p>
+              <h2>800</h2>
+            </div>
+            <div class="p-detalles">
+              <p>Publicaciones <br> Usadas : <span>700</span></p>
+              <p>Publicaciones <br> Disponibles : <span>100</span></p>
+            </div>
+          </div>
+          <div class="col-md-8 p-simple">
+            <div class="p-detalles-head">
+              <p>Simples</p>
+              <h2>220</h2>
+            </div>
+            <div class="p-detalles">
+              <p>Publicaciones <br> Usadas : <span>150</span></p>
+              <p>Publicaciones <br> Disponibles : <span>70</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <hr>
+    <h1 class="vistas">Vistas</h1>
+    <div class="row chart-content">
+        <div class="col-md-6">
+          <div class="nro-publi">
+            <p>Nro.<br>
+            Publicaciones</p>
+            <div>22</div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div style="display: block;">
+          <canvas baseChart width="400" height="400"
+                      [datasets]="lineChartData"
+                      [labels]="lineChartLabels"
+                      [options]="lineChartOptions"
+                      [legend]="lineChartLegend"
+                      [chartType]="lineChartType"
+                      [colors]="lineChartColors"
+                      (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)"></canvas>
+          </div>
+      </div>
+
+    </div>
+    <br>
+    <div class="row coment-content">
+      <div class="col-md-12 coment-content2">
+        <h3>Comentarios recientes</h3>
+      <hr>
+      <ul class="list-unstyled">
+        <li class="media">
+          <img class="d-flex mr-3" src="./assets/img/foto3.jpg" alt="Generic placeholder image">
+          <div class="media-body">
+            <h5 class="mt-0 mb-1">Juan Perez</h5>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          </div>
+          <a href="">Ver</a>
+        </li>
+        <hr>
+        <li class="media my-4">
+          <img class="d-flex mr-3" src="./assets/img/foto2.jpg" alt="Generic placeholder image">
+          <div class="media-body">
+            <h5 class="mt-0 mb-1">Fiorella Reyes</h5>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          </div>
+          <a href="">Ver</a>
+        </li>
+        <hr>
+        <li class="media">
+          <img class="d-flex mr-3" src="./assets/img/foto1.jpg" alt="Generic placeholder image">
+          <div class="media-body">
+            <h5 class="mt-0 mb-1">Alfredo Martinez</h5>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+          </div>
+          <a href="">Ver</a>
+        </li>
+      </ul>
+      </div>
+
+    </div>
+  </div>
+</div>

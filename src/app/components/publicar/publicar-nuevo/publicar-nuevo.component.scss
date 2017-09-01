@@ -1,0 +1,180 @@
+@import "../../../../styles";
+form{
+    padding-bottom:30px;
+    .marg-bot{
+        margin-bottom: 25px;
+    }
+    .check-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+    .tipo-alquiler-container,.moneda-container{
+        md-radio-group{
+            display: flex !important;
+            flex-direction: column !important;
+        }
+    }
+    .btn-publicar{
+        background:$accent-color;
+        color:white;
+        font-weight: bold;
+        padding-top:10px;
+        padding-bottom:10px;
+        border:none;
+        font-size: 20px;
+        outline: none;
+        border-radius:7px;
+        cursor: pointer;
+        box-shadow:$border-shadow-bread;
+        &:hover{
+            box-shadow:$border-shadow-hover;
+        }
+    }
+    .dashed{
+        border-style: dashed;
+        border-color: $divider-color;
+        min-height: 220px;
+        padding-bottom: 20px;
+        &.dashdrop{
+            border-color: $accent-color;
+        }
+        .cloud{
+            background-image: url("../../../../assets/img/cloud.png");
+            width: 100px;
+            height: 100px;
+            background-size: contain;
+            margin: auto;
+            &.boxdrop {
+                background-image: url("../../../../assets/img/cloudcolor.png");
+            }
+        }
+
+        .span{
+                margin: 10px 0 0 0;
+                color: $secondary-text-color;
+                position: relative;
+                &::before{
+                    left: 0;
+                }
+                &::after{
+                    right: 0;
+                }
+                &::before,&::after{
+                        position: absolute;
+                        content: "";
+                        height: 2px;
+                        background: #757575;
+                        width: 40%;
+                        top: 50%;
+                        transform: translateY(-50%);
+                }
+        }
+        .btn-subir-imgs{
+            background:$accent-color;
+            width:100%;
+            color: $primary-color-text;
+            font-size: 18px;
+            font-weight: bold;
+            height: 40px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: $border-shadow-bread;
+            transition: all 0.25 ease;
+            label{
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+                cursor: pointer;
+            }
+            input{
+                display: none;
+            }
+            &:hover{
+                background: $fondos;
+                height: 42px;
+                color: $accent-color;
+                box-shadow: $border-shadow-hover;
+            }
+        }
+
+    }
+    .image-container{
+        width: 115px;
+        height: 105px;
+        position: relative;
+        z-index: 1;
+        cursor: pointer;
+        .ico-image{
+            font-size: 105px;
+            color: $secondary-text-color;
+            z-index: 0;
+
+        }
+        .ico-plus{
+            background: $accent-color;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            z-index: 5;
+            position: absolute;
+            font-size: 15px;
+            right:-2px;
+            bottom: 3px;
+        }
+        label{
+            cursor: pointer;
+            position: absolute;
+            top: 0;
+            left:0;
+            width: 100%;
+            height: 100%;
+        }
+        input{
+            display: none;
+        }
+    }
+    .upload_img{
+        li{
+            list-style: none;
+            position: relative;
+            height: 155px;
+            .img-fluid{
+                height: 100%;
+                object-fit: cover;
+            }
+            .img-close{
+                cursor:pointer;
+                position: absolute;
+                top:-15px;
+                right: 0;
+                background: $fondos;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: $secondary-text-color;
+                box-shadow: $border-shadow-bread;
+                i{
+                    padding:5px 5px;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+.spinner{
+    display: none;
+    .visible{
+        display: block;
+    }
+}

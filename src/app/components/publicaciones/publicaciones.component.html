@@ -1,0 +1,85 @@
+<app-nav></app-nav>
+<div class="dash">
+	<div class="container-fluid">
+		<div class="row d-flex align-items-center">
+			<div class="col-10">
+				<h1>Gestiona tus publicaciones</h1>
+			</div>
+			<div class="col-2 d-flex justify-content-end">
+				<button [routerLink]="['/publicar/nuevo']" class="btn-plus" type="button"><i class="fa fa-plus"></i>
+					</button>
+			</div>
+		</div>
+
+		<div class="row filtros-container">
+			<!-- <div class="col-6 col-md-3">
+				 <md-select placeholder="Tiempo" >
+				  <md-option *ngFor="let tiempo of fechas" [value]="fechas">
+				    {{ tiempo }}
+				  </md-option>
+				</md-select>
+				<button class="btn btn-block btn-outline-warning">Todas</button>
+			</div> -->
+			<div class="col-6 col-md-3">
+				<md-select placeholder="Catergoria" (change)="changedCategory($event)" >
+				  <md-option *ngFor="let categoria of listaCategorias" [value]="categoria.id">
+				    {{ categoria.name }}
+				  </md-option>
+				</md-select>
+			</div>
+			<div class="col-6 col-md-3">
+				<md-select placeholder="Marca" (change)="changedBrand($event)" >
+				  <md-option *ngFor="let marca of listaMarcas" [value]="marca.id">
+				    {{ marca.name }}
+				  </md-option>
+				</md-select>
+			</div>
+			<div class="col-6 col-md-3">
+				<md-select placeholder="Tipo" (change)="changedType($event)" >
+				  <md-option *ngFor="let tipo of listaTipos" [value]="tipo">
+				    {{ tipo }}
+				  </md-option>
+				</md-select>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-12">
+				<table id="tabla" class="table table-striped" >
+				  <thead>
+				    <tr>
+				      <th>Imagen</th>
+              <th>Marca</th>
+              <th>Modelo</th>
+				      <th>Categoria</th>
+				      <th>Fecha publicacion</th>
+				      <th>Tipo</th>
+							<!-- <th>Estadisticas</th> -->
+							<th>Editar</th>
+				      <th>Activo</th>
+				      <th>Detalles</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+							<tr *ngFor="let publicacion of listaPublicaciones  | paginate: { itemsPerPage: 10, currentPage: p }">
+								<th><img [src]="publicacion.urlImages[0]" alt=""></th>
+                <td>{{publicacion.brand.name}}</td>
+                <td>{{publicacion.modelo}}</td>
+								<td>{{publicacion.category.name}}</td>
+								<td>{{publicacion.dateCreated | date}}</td>
+								<td>{{publicacion.operacion}}</td>
+								<!-- <td><a href="">Ver</a></td> -->
+								<td><a [routerLink]="['/publicar/editar',publicacion.id]"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+								<td><md-checkbox (click)="StatusPubli(publicacion.id,publicacion.status)" [checked]="publicacion.status==1"></md-checkbox></td>
+								<td><a [href]="['http://www.easymaq.com/pe/maquinarias/'+publicacion.id]" target="_blanck">Ver más</a></td>
+							</tr>
+				  </tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="row d-flex justify-content-center">
+           <pagination-controls (pageChange)="p = $event" screenReaderCurrentLabel="You're on page" nextLabel="Siguiente" previousLabel="Anterior"></pagination-controls>
+    </div>
+	</div>
+</div>

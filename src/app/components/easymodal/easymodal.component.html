@@ -1,0 +1,7 @@
+<div  class="container-modal" *ngIf="dataconfig.activemodal">
+    <h2>{{ dataconfig.titulo }}</h2>
+    <div class="content-modal">
+        <h3>{{ dataconfig.descripcion }}</h3>
+        <button (click)="lanzar($event);">aceptar</button>
+    </div>
+</div>

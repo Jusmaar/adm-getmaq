@@ -1,0 +1,44 @@
+<!-- <div class="col-12">
+   <md-input-container>
+      <input mdInput placeholder="Ejem: Av. Javier Prado 2922">
+   </md-input-container>
+</div>
+<agm-map
+    [latitude]="lat"
+    [longitude]="lng"
+    [zoom]="zoom"
+    (mapClick)="clickMapa($event)">
+   <agm-marker *ngFor="let marcador of _ms.marcadores"
+      [latitude]="marcador.lat"
+      [longitude]="marcador.lng"
+      [markerDraggable]="marcador.draggable">
+    </agm-marker>
+</agm-map> -->
+
+<div class="col-12">
+      <md-input-container class="cnt-reclamaciones box-info-ubi">
+        <input mdInput placeholder="Ejem: Av. Javier Prado 2922"
+        autocorrect="off"
+        autocapitalize="off" spellcheck="off" type="text" class="form-control"
+        #search id="address" [formControl]="searchControl">
+    </md-input-container>
+</div>
+
+<agm-map
+    [latitude]="latitude"
+    [longitude]="longitude"
+    [zoom]="zoom"
+    (mapClick)="mapClicked($event);"
+    [scrollwheel]="false"
+
+>
+    <agm-marker  class="deletebox"
+        [latitude]="latitude"
+        [longitude]="longitude"
+        [markerDraggable]="true"
+        (dragEnd)="markerDragEnd($event)"
+        (markerClick)=false
+        (openInfoWindow)=false
+        >
+    </agm-marker>
+</agm-map>

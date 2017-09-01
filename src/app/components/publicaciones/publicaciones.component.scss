@@ -1,0 +1,85 @@
+@import "../../../styles";
+.dash{
+	position:relative;
+  	left:19%;
+ 	width: 81%;
+  	margin-top:10px;
+  	@media screen and (max-width:1024px){
+	    width: 100%;
+	    left: 0;
+   }
+   h1{
+	   color: $primary-color;
+		font-size: 30px;
+		margin: 20px 0 ;
+		font-weight: bold;
+		@media screen and (max-width:576px){
+			margin: 10px 0;
+			font-size: 20px;
+		}
+   }
+   .btn-plus{
+		border: 1px solid $accent-color;
+		outline: none;
+		cursor: pointer;
+	   color: white;
+		width: 60px;
+	   height: 60px;
+	   border-radius: 50%;
+	   display: flex;
+	   justify-content: center;
+      align-items: center;
+		background: $accent-color;
+		font-size: 25px;
+		transition: all 0.5s ease;
+		box-shadow: $border-shadow-bread;
+	   &:hover{
+		   background: transparent;
+		   color:$accent-color;
+		}
+		@media screen and (max-width:576px){
+			width: 40px;
+			height: 40px;
+			font-size: 15px;
+		}
+   }
+   .filtros-container{
+	   margin: 10px 0;
+	}
+	.table{
+		box-shadow: $border-shadow-bread;
+		td,th{
+			vertical-align: middle;
+			a{
+				color: $accent-color;
+				&:hover{
+					text-decoration:underline;
+					font-weight: bold;
+				}
+			}
+			img{
+				height: 50px;
+				width: 50px;
+				object-fit: cover;
+			}
+		}
+	}
+	// .table td, .table th{
+
+   // }
+
+   .page-item.active .page-link{
+   		color: white;
+   		background: $accent-color;
+   		border:$accent-color;
+   }
+   .page-link{
+   		color: black;
+   		&:focus, &:hover{
+   		color: white;
+   		background: $accent-color;
+   		}
+   }
+
+
+}

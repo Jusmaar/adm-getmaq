@@ -1,0 +1,26 @@
+@import "../../../styles";
+.dash{
+	position:relative;
+  	left:19%;
+ 	width: 81%;
+  	margin-top:10px;
+  	@media screen and (max-width:1024px){
+	    width: 100%;
+	    left: 0;
+    }
+   	.btn-group{
+		width:100%;
+		button{
+			width: 33.3%;
+			color: $secondary-text-color;
+			border-color:$accent-color;
+			font-weight: bold;
+			letter-spacing: 7px;
+			&.btn-secondary.active, &.btn-secondary:hover{
+				background: $accent-color;
+				color: white;
+
+			}
+		}
+	}
+}

@@ -1,0 +1,222 @@
+<br>
+<br>
+<form #forma="ngForm">
+    <div class="row marg-bot">
+        <h3 class="col-12 marg-bot">Tipo de operación</h3>
+        <div class="col-md-4 d-flex align-items-center">
+            <md-select placeholder="¿Desea Vender o Alquilar?" [(ngModel)]="selectTipo" name="selectTipo">
+                <md-option *ngFor="let tipo of tipos" [value]="tipo">
+                    {{ tipo }}
+                </md-option>
+            </md-select>
+        </div>
+        <div class="col-md-4 d-flex align-items-center">
+            <md-select placeholder="¿Seleccione el tipo de maquinaria?" [(ngModel)]="selectCategoria" name="selectCategoria">
+                <md-option *ngFor="let categoria of listaCategorias" [value]="categoria.id">
+                    {{ categoria.name }}
+                </md-option>
+            </md-select>
+        </div>
+    </div>
+
+    <div class="row marg-bot">
+        <h3 class="col-12 marg-bot">Ubicación de maquinaria</h3>
+        <div class="col-md-4 d-flex align-items-center">
+            <md-select placeholder="Seleccione el departamento" [(ngModel)]="selectDepartamento" name="selecDepartamento">
+                <md-option *ngFor="let departamento of listaDepartamento" [value]="departamento.departamento" (click)="getProvincia()">
+                    {{ departamento.nombre }}
+                </md-option>
+            </md-select>
+        </div>
+        <div class="col-md-4 d-flex align-items-center">
+            <md-select placeholder="Seleccione la provincia" [(ngModel)]="selectProvincia" name="selectProvincia">
+                <md-option *ngFor="let provincia of listaProvincia" [value]="provincia.provincia" (click)="getDistrito()">
+                    {{ provincia.nombre }}
+                </md-option>
+            </md-select>
+        </div>
+        <div class="col-md-4 d-flex align-items-center">
+            <md-select placeholder="Seleccione el distrito" [(ngModel)]="selectDistrito" name="selectDistrito">
+                <md-option *ngFor="let distrito of listaDistrito" [value]="distrito.distrito">
+                    {{ distrito.nombre }}
+                </md-option>
+            </md-select>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+        <h3 class="col-md-7 text-center">Ubicar en el mapa</h3>
+        <div class="col-md-12">
+            <app-mapa *ngIf="misavisosmapa" [datamapa]="misavisosmapa" (pasaBtndireccion)="showBtnDireccion($event)"></app-mapa>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center marg-bot">
+        <!-- <h3 class="col-12">Sube tus fotos</h3>
+        <div NgDropFiles (archivosSobre)="archivosSobreDropZone($event)" (archivosImg)="archivosImagenes($event)" [ngClass]="{'dashdrop': estaSobreDropZone}"
+            class="col-md-11 dashed hidden-xs-down">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-3 text-center">
+                    <div class="cloud" [ngClass]="{'boxdrop': estaSobreDropZone}" (archivosImg)="archivosImagenes($event)"></div>
+                    <h5>Arrastra y suelta tus fotos</h5>
+                    <div class="span">ó</div>
+                    <div class="btn-subir-imgs">
+                        <label for="inp-file">Subir imágenes</label>
+                        <input NgDropFiles multiple (archivosImg)="archivosImagenes($event)" type="file" id="inp-file" accept="image/*">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row hidden-sm-up">
+                <div class="col-4">
+                    <div class="image-container">
+                        <label for="inp-file"></label>
+                        <input NgDropFiles multiple type="file" id="inp-file" accept="image/*">
+                        <i class="fa fa-picture-o ico-image"></i>
+                        <i class="fa fa-plus ico-plus"></i>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <h6>Seleccionar fotos</h6>
+                    <small>Formatos permitidos JPG,JPEG,PNG</small>
+                    <small>(Tamaño maximo:5Mb)</small>
+                    <small>Tamaño de imagen de referencia(800x600px)</small>
+                </div>
+            </div>
+        </div> -->
+      </div>
+    <ul class="upload_img row">
+        <li *ngFor="let image of imagespublicacion; let i = index" class="col-4 col-md-2">
+            <img [src]="image" class="img-fluid" name="file">
+            <!-- <div class="img-close" (click)="deleteimage(i)"><i class="fa fa-times" aria-hidden="true"></i></div> -->
+        </li>
+    </ul>
+    <div class="row">
+        <h3 class="col-12">Precio</h3>
+        <div class="col-md-4 check-container">
+            <md-checkbox [(ngModel)]="checkconsultar" name="checkconsultar">A consultar</md-checkbox>
+        </div>
+
+        <div *ngIf="!checkconsultar" class="col-md-8">
+            <div class="row">
+                <div *ngIf="selectTipo=='Alquiler'" class="col-md-3 tipo-alquiler-container">
+                    <h5>Tipo de alquiler*</h5>
+                    <md-radio-group [(ngModel)]="tipo_alq" name="tipo_alq">
+                        <md-radio-button value="Hora">Por hora</md-radio-button>
+                        <md-radio-button value="Dia">Por día</md-radio-button>
+                        <md-radio-button value="Semana">Por semana</md-radio-button>
+                    </md-radio-group>
+                </div>
+                <div class="col-md-3 moneda-container">
+                    <h5>Moneda*</h5>
+                    <md-radio-group [(ngModel)]="moneda" name="moneda">
+                        <md-radio-button value="dolares">US$</md-radio-button>
+                        <md-radio-button value="soles">S/</md-radio-button>
+                    </md-radio-group>
+                </div>
+                <div class="col-md-6">
+                    <md-input-container>
+                        <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                type = "number"
+                                maxlength = "30" mdInput placeholder="Precio" [(ngModel)]="precio" name="precio">
+                    </md-input-container>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <h3 class="col-12">Datos de la Maquinaria</h3>
+        <div class="col-md-4 d-flex align-items-center">
+            <md-select placeholder="Seleccione condicion" [(ngModel)]="selectCondicion" name="selectCondicion">
+                <md-option *ngFor="let condicion of condiciones" [value]="condicion">
+                    {{ condicion }}
+                </md-option>
+            </md-select>
+        </div>
+        <div class="col-md-4 d-flex align-items-center">
+            <!-- <md-input-container >
+                <input  mdInput placeholder="Ingrese la marca" [(ngModel)]="marca" name="marca">
+            </md-input-container> -->
+            <md-select placeholder="Seleccione la marca" [(ngModel)]="marca" name="marca">
+                <md-option *ngFor="let marca of listaMarcas" [value]="marca.id">
+                    {{ marca.name }}
+                </md-option>
+            </md-select>
+        </div>
+        <div class="col-md-4">
+            <md-input-container>
+                <input  mdInput placeholder="Ingrese el modelo" [(ngModel)]="modelo" name="model">
+            </md-input-container>
+        </div>
+        <div class="col-md-4">
+            <md-input-container>
+                <input required mdInput oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    type = "number" maxlength = "4" placeholder="Ingrese el año" [(ngModel)]="ano" name="ano">
+            </md-input-container>
+        </div>
+        <div class="col-md-4">
+            <md-input-container>
+                <input mdInput placeholder="Horas/maquina" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                    type = "number" maxlength = "10"[(ngModel)]="horas_maquina" name="horas_maquina">
+            </md-input-container>
+        </div>
+        <div class="col-md-7">
+            <md-input-container>
+                <textarea mdInput placeholder="Descripcion" [(ngModel)]="descripcion" name="descripcion"></textarea>
+            </md-input-container>
+        </div>
+    </div>
+
+    <div class="row">
+        <h3 class="col-12">Datos de Contacto</h3>
+        <div class="col-md-4">
+            <md-input-container>
+                <input mdInput placeholder="Nombre" [(ngModel)]="nombre" name="nombre">
+            </md-input-container>
+        </div>
+        <div class="col-md-4">
+            <md-input-container>
+                <input mdInput placeholder="Apellidos" [(ngModel)]="apellido" name="apellido">
+            </md-input-container>
+        </div>
+        <div class="col-md-4">
+            <md-input-container>
+                <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                type = "number" maxlength = "15"  required mdInput placeholder="Telefono 1" [(ngModel)]="contacto_tel1" name="contacto_tel1">
+            </md-input-container>
+        </div>
+        <div class="col-md-4">
+            <md-input-container>
+                <input  oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                type = "number" maxlength = "15"  mdInput placeholder="Telefono 2" [(ngModel)]="contacto_tel2" name="contacto_tel2">
+            </md-input-container>
+        </div>
+        <div class="col-md-8">
+            <md-input-container>
+                <input  mdInput
+                  placeholder="Correo electronico" [(ngModel)]="email" name="email">
+            </md-input-container>
+        </div>
+        <div class="col-md-4">
+            <md-input-container>
+                <input mdInput placeholder="Horario de atención" [(ngModel)]="horario" name="horario">
+            </md-input-container>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-5" *ngIf="btnupdate">
+            <button class="btn-update btn-block" (click)="submit()">Actualizar</button>
+        </div>
+        <div *ngIf="visible">
+            <md-spinner></md-spinner>
+        </div>
+    </div>
+
+</form>
+<app-easymodal [dataconfig]="misdatosdataconfig" (pasaBtnmodal)="showBtnmodal($event)"></app-easymodal>
+<!-- <app-easymodal [dataconfig]="misdatosdataconfig"></app-easymodal> -->
+

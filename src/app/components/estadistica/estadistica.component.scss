@@ -1,0 +1,70 @@
+@import "../../../styles";
+
+
+.dash{
+    position:relative;
+  	left:19%;
+ 	width: 81%;
+  	margin-top:10px;
+  	@media screen and (max-width:1024px){
+	    width: 100%;
+	    left: 0;
+   }
+   .estadistica-container{
+	   padding-top: 10px;
+	   padding-bottom: 10px;
+	   background: $fondos;
+	   box-shadow: $border-shadow-bread;
+	   h3{
+		   color: $primary-color-dark;
+	   }
+	   .img-container{
+			width: 100%;
+		}
+	   p{
+		color: $secondary-text-color;
+		font-weight: bold;
+			span{
+				font-weight:400;
+			}
+	    }
+	   .btn-vermas{
+		   margin: auto;
+		   border: none;
+		   outline: none;
+		   border-radius: 5px;
+		   background: $accent-color;
+		   color: white;
+		   cursor: pointer;
+		   box-shadow: $border-shadow-bread;
+		   &:active{
+			   box-shadow: $border-shadow-hover;
+		   }
+	   }
+	   .grafica{
+		   display: flex;
+		   flex-direction: column;
+		   align-items: center;
+			@media screen and (max-width:768px){
+				margin-top: 20px;
+			}
+		   canvas{
+				height: 90% !important;
+			}
+	   }
+		
+   }
+   .comentarios-barra{
+	   padding-top: 10px;
+	   padding-bottom: 10px;
+	   background: $fondos;
+	   box-shadow: $border-shadow-bread;
+	   canvas{
+		   height: 270px !important;
+		   @media screen and (max-width:768px){
+				height: 175px !important;
+			}
+	   }
+   }
+   
+}
