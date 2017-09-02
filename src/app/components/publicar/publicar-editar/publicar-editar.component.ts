@@ -12,7 +12,7 @@ import { Router } from '@angular/router'
 export class PublicarEditarComponent implements OnInit {
   misdatosdataconfig: any = {
     'activemodal': false,
-    'titulo': 'Mensaje de Easymaq',
+    'titulo': 'Mensaje de Getmaq',
     'descripcion': 'En unos momentos le estaremos informando a su correo'
 
   };

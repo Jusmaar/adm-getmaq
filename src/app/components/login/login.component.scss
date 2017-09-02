@@ -16,6 +16,13 @@
                 width: 150px;
             }
         }
+        h1{
+            font-size:40px;
+            color: white;
+            span{
+                color: $accent-color;
+            }
+        }
     }
 }
 .eq-login-pass{
