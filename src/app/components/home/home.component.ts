@@ -1,16 +1,43 @@
-import { Component} from '@angular/core';
+import { Component,OnInit} from '@angular/core';
 import { AdminService } from '../../services/admin.service';
+import { PublicarService } from '../../services/publicar.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+
+export class HomeComponent  implements OnInit{
+  iduser:any;
+  cantPubli:any;
+  ultimasPublic:any[]=[];
+
+  constructor(private _publicarService:PublicarService){
+
+  }
+  ngOnInit(){
+    this.iduser = JSON.parse(localStorage.getItem('client')).id;
+    this.getListaPublicaciones();
+  }
+
+  getListaPublicaciones() {
+    let publicaciones = this._publicarService.getPublicaciones(this.iduser)
+      .subscribe(res => {
+        console.log(res);
+        this.cantPubli=res.length;
+        this.ultimasPublic.push(res[this.cantPubli-1],res[this.cantPubli-2],res[this.cantPubli-3]);
+        console.log(this.cantPubli);
+        console.log(this.ultimasPublic);
+        publicaciones.unsubscribe();
+      });
+
+  }
+
     public lineChartData:Array<any> = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'},
-    {data: [18, 48, 77, 9, 100, 27, 40], label: 'Series C'}
+    {data: [65, 59, 80, 81, 56, 55, 40], label: 'A'},
+    {data: [28, 48, 40, 19, 86, 27, 90], label: 'B'},
+    {data: [18, 48, 77, 9, 100, 27, 40], label: 'C'}
   ];
   public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChartOptions:any = {
@@ -65,5 +92,7 @@ export class HomeComponent {
   public chartHovered(e:any):void {
     console.log(e);
   }
+
+
 
 }

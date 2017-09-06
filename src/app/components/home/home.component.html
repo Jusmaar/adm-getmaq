@@ -1,7 +1,7 @@
 <app-nav></app-nav>
 <div class="dash">
   <div class="container-fluid">
-    <div class="row justify-content-md-center">
+    <!-- <div class="row justify-content-md-center">
       <div class="col-md-5 plan-datos">
         <h2 class="">120</h2>
         <p>Total publicaciones</p>
@@ -31,65 +31,51 @@
           </div>
         </div>
       </div>
-    </div>
-    <br>
-    <hr>
+    </div> -->
+
     <h1 class="vistas">Vistas</h1>
     <div class="row chart-content">
-        <div class="col-md-6">
-          <div class="nro-publi">
-            <p>Nro.<br>
-            Publicaciones</p>
-            <div>22</div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div style="display: block;">
-          <canvas baseChart width="400" height="400"
-                      [datasets]="lineChartData"
-                      [labels]="lineChartLabels"
-                      [options]="lineChartOptions"
-                      [legend]="lineChartLegend"
-                      [chartType]="lineChartType"
-                      [colors]="lineChartColors"
-                      (chartHover)="chartHovered($event)"
-                      (chartClick)="chartClicked($event)"></canvas>
-          </div>
+      <div class="chart-content2">
+          <div class="col-md-6">
+              <div class="nro-publi">
+                <p>Nro.<br>
+                Publicaciones</p>
+                <div>{{cantPubli}}</div>
+              </div>
+            </div>
+            <!-- <div class="col-md-6">
+              <div style="display: block;">
+              <canvas baseChart width="400" height="400"
+                          [datasets]="lineChartData"
+                          [labels]="lineChartLabels"
+                          [options]="lineChartOptions"
+                          [legend]="lineChartLegend"
+                          [chartType]="lineChartType"
+                          [colors]="lineChartColors"
+                          (chartHover)="chartHovered($event)"
+                          (chartClick)="chartClicked($event)"></canvas>
+              </div>
+          </div> -->
       </div>
-
     </div>
     <br>
+
     <div class="row coment-content">
       <div class="col-md-12 coment-content2">
-        <h3>Comentarios recientes</h3>
+        <h3>Publicaciones recientes</h3>
       <hr>
       <ul class="list-unstyled">
-        <li class="media">
-          <img class="d-flex mr-3" src="./assets/img/foto3.jpg" alt="Generic placeholder image">
-          <div class="media-body">
-            <h5 class="mt-0 mb-1">Juan Perez</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-          </div>
-          <a href="">Ver</a>
-        </li>
-        <hr>
-        <li class="media my-4">
-          <img class="d-flex mr-3" src="./assets/img/foto2.jpg" alt="Generic placeholder image">
-          <div class="media-body">
-            <h5 class="mt-0 mb-1">Fiorella Reyes</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-          </div>
-          <a href="">Ver</a>
-        </li>
-        <hr>
-        <li class="media">
-          <img class="d-flex mr-3" src="./assets/img/foto1.jpg" alt="Generic placeholder image">
-          <div class="media-body">
-            <h5 class="mt-0 mb-1">Alfredo Martinez</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-          </div>
-          <a href="">Ver</a>
-        </li>
+        <div *ngFor="let ultimas of ultimasPublic">
+           <li class="media" >
+              <img class="d-flex mr-3" [src]="ultimas.urlImages[0]" alt="Generic placeholder image">
+              <div class="media-body">
+                <h5 class="mt-0 mb-1">{{ultimas.brand.name}} - {{ultimas.modelo}}</h5>
+                {{ultimas.category.name}}
+              </div>
+              <a [href]="['http://www.easymaq.com/pe/maquinarias/'+ultimas.id]" target="_blanck">Ver</a>
+            </li>
+            <hr>
+        </div>
       </ul>
       </div>
 

@@ -19,7 +19,7 @@ const APP_ROUTES:Routes = [
     	component: PublicarComponent,
     	children:PUBLICAR_ROUTES
     },
-    { path:'estadistica' , component: EstadisticaComponent, canActivate: [ComponentGuard] },
+    { path:'estadistica/:id' , component: EstadisticaComponent, canActivate: [ComponentGuard] },
     { path:'**', pathMatch:'full', redirectTo:'home' }
 ];
 

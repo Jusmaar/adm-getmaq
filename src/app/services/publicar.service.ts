@@ -145,4 +145,19 @@ export class PublicarService {
                 return data1;
             })
     }
+
+    EstadisticasPub(id,tiempo){
+        var ruta= `http://34.227.201.151:8080/vistas-publication-${tiempo}/${id}`
+        if(tiempo==='day') {
+            return this.http.get(ruta)
+                .map(res=>res.json());
+                
+        }else if(tiempo==='week') {
+            return this.http.get(ruta)
+                .map(res=>res.json());
+        }else if(tiempo==='month') {
+            return this.http.get(ruta)
+                .map(res=>res.json());
+        }
+    }
 }

@@ -57,6 +57,7 @@
 							<!-- <th>Estadisticas</th> -->
 							<th>Editar</th>
 				      <th>Activo</th>
+				      <th>Estadisticas</th>
 				      <th>Detalles</th>
 				    </tr>
 				  </thead>
@@ -71,6 +72,10 @@
 								<!-- <td><a href="">Ver</a></td> -->
 								<td><a [routerLink]="['/publicar/editar',publicacion.id]"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
 								<td><md-checkbox (click)="StatusPubli(publicacion.id,publicacion.status)" [checked]="publicacion.status==1"></md-checkbox></td>
+								<td><a [routerLink]="['/estadistica',publicacion.id]">
+									<i class="fa fa-bar-chart" aria-hidden="true"></i>
+									</a>
+								</td>
 								<td><a [href]="['http://www.easymaq.com/pe/maquinarias/'+publicacion.id]" target="_blanck">Ver más</a></td>
 							</tr>
 				  </tbody>

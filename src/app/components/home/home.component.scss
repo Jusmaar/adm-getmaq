@@ -108,47 +108,61 @@
   }
   .chart-content{
     background:white;
-    .nro-publi{
-      color: $accent-color;
-      margin-top:100px;
-      text-align: center;
-      font-size: 30px;
-      font-weight: bold;
-      @media screen and (max-width:768px){
-        margin-top:50px;
-      }
-      @media screen and (max-width:576px){
-        margin: 0;
-        font-size: 20px;
-      }
-      div{
-        border-radius:6px;
-        width: 120px;
-        height: 120px;
-        background:$accent-color;
-        color:white;
-        font-weight: bold;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 50px;
-        margin : auto;
-        @media screen and (max-width:768px){
-          width: 50px;
-          height: 50px;
-          font-size: 20px;
-        }
-      }
+    padding: 20px;
+    .chart-content2{
+      box-shadow: $border-shadow-hover;
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items:center;
+        .nro-publi{
+            color: $accent-color;
+            margin-top:50px;
+            margin-bottom: 50px;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            @media screen and (max-width:768px){
+              margin-top:50px;
+              margin-bottom: 50px;
+            }
+            @media screen and (max-width:576px){
+              margin: 0;
+              font-size: 20px;
+            }
+            div{
+              border-radius:6px;
+              width: 120px;
+              height: 120px;
+              background:$accent-color;
+              color:white;
+              font-weight: bold;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-size: 50px;
+              margin : auto;
+              @media screen and (max-width:768px){
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+              }
+            }
 
+          }
     }
+
   }
   .coment-content{
     border-radius:6px;
     padding: 10px 20px 0 20px;
     background:white;
-    box-shadow:$border-shadow-bread;
+    // box-shadow:$border-shadow-bread;
+    margin-bottom: 20px;
     .coment-content2{
-      box-shadow: $border-shadow-bread;
+      padding-top: 10px;
+      box-shadow: $border-shadow-hover;
       // border: 1px solid black;
     }
     .list-unstyled{
@@ -160,6 +174,9 @@
       color:$primary-text-color;
     }
     img{
+      height: 60px;
+      width: 60px;
+      object-fit: cover;
       border-radius:50%;
     }
     .media-body{
@@ -170,6 +187,9 @@
         &:hover{
           text-decoration: underline;
         }
+    }
+    h5{
+      text-transform:capitalize;
     }
   }
 }
