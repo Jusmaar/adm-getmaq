@@ -27,32 +27,32 @@ export class PublicarService {
     }
 
     getPublicacionId(id): Observable<any> {
-        let ruta = `http://34.227.201.151:8080/publications/${id}?filter[include]=brand`;
+        let ruta = `http://54.164.83.170:8080/publications/${id}?filter[include]=brand`;
         return this.http.get(ruta)
             .map(res => res.json());
 
     }
 
     getPublicaciones(id): Observable<any> {
-        let ruta = `http://34.227.201.151:8080/publications-admin?usuarioId=${id}`;
+        let ruta = `http://54.164.83.170:8080/publications-admin?usuarioId=${id}`;
         return this.http.get(ruta)
             .map(res => res.json());
     }
 
     getPublicacionesCustomize(query: string): Observable<any> {
-        let ruta = `http://34.227.201.151:8080/publications-admin?${query}`;
+        let ruta = `http://54.164.83.170:8080/publications-admin?${query}`;
         return this.http.get(ruta)
             .map(res => res.json());
     }
 
     getMarcas(): Observable<any> {
-        let ruta = 'http://34.227.201.151:8080/brands';
+        let ruta = 'http://54.164.83.170:8080/brands';
         return this.http.get(ruta)
             .map(res => res.json());
     }
 
     getCatergorias(): Observable<any> {
-        let ruta = 'http://34.227.201.151:8080/categories';
+        let ruta = 'http://54.164.83.170:8080/categories';
         return this.http.get(ruta)
             .map(res => res.json());
     }
@@ -101,7 +101,7 @@ export class PublicarService {
     }
 
     uploadFile(files: any): Observable<any> {
-        let url: string = 'http://34.227.201.151:8080/upload-image';
+        let url: string = 'http:///upload-image';
         return Observable.create(
             observer => {
                 const request = new XMLHttpRequest();
@@ -127,7 +127,7 @@ export class PublicarService {
     }
 
     publicar(obj) {
-        let ruta = 'http://34.227.201.151:8080/publications';
+        let ruta = 'http://54.164.83.170:8080/publications';
         let data = JSON.stringify(obj);
         return this.http.post(ruta, data)
             .map(res => {
@@ -137,7 +137,7 @@ export class PublicarService {
     }
 
     ModificarPub(id, obj) {
-        let ruta = `http://34.227.201.151:8080/publications/${id}`
+        let ruta = `http://54.164.83.170:8080/publications/${id}`
         let data = JSON.stringify(obj);
         return this.http.put(ruta, obj)
             .map(res => {
@@ -147,11 +147,11 @@ export class PublicarService {
     }
 
     EstadisticasPub(id,tiempo){
-        var ruta= `http://34.227.201.151:8080/vistas-publication-${tiempo}/${id}`
+        var ruta= `http://54.164.83.170:8080/vistas-publication-${tiempo}/${id}`
         if(tiempo==='day') {
             return this.http.get(ruta)
                 .map(res=>res.json());
-                
+
         }else if(tiempo==='week') {
             return this.http.get(ruta)
                 .map(res=>res.json());

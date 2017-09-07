@@ -48,8 +48,8 @@ export class LoginComponent implements OnInit, OnDestroy {
         this.confirm('Asegurese haber llenado los campos');
     }else if(!correo.valid){
         this.confirm('Error en el formato de correo');
-    }else{ 
-      let subForm: Subscription = this.service.login('http://34.227.201.151:8080/usuarios/login?include=user', obj)
+    }else{
+      let subForm: Subscription = this.service.login('http://54.164.83.170:8080/usuarios/login?include=user', obj)
         .subscribe((res: any) => {
           console.log('res: ', res);
           this.service.set(res);
@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.router.navigate(['/publicaciones']);
         });
     }
-      
+
   }
 
 }
